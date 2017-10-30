@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<application xmlns="http://wadl.dev.java.net/2009/02"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+	xmlns:wadl="http://wadl.dev.java.net/2009/02"
+	xmlns:csapi="http://docs.openstack.org/compute/api/v1.1"
+	xmlns:compext="http://docs.openstack.org/compute/api/v1.1">
+    <resources base="http://202.121.178.250:8080/v1">
+        <resource path="/AUTH_{tenant_id}">
+			<param type="xsd:string" style="template" name="tenant_id"/>
+            <resource path="{account}">
+                <param type="xsd:string" style="template" name="account"/>
+                <method name="GET" id="getAccount">
+                    <request>
+                        <param type="xsd:string" style="URI" name="tenant_id"/>
+						<param type="xsd:int" style="query" name="limit"/>
+						<param type="xsd:string" style="query" name="marker"/>
+						<param type="xsd:string" style="query" name="end_marker"/>
+						<param type="xsd:string" style="query" name="format"/>
+                    </request>
+					<response status="200"> 
+						<representation mediaType="application/json"/>   
+					</response> 
+                </method>
+				<method name="HEAD" id="headAccount">
+                    <request>
+                        <param type="xsd:string" style="URI" name="tenant_id"/>
+                    </request>
+                    <response statuc="204">
+                        <param type="xsd:int" style="header" name="X-Account-Container-Count"/>
+						<param type="xsd:int" style="header" name="X-Account-Bytes-Used"/>
+                    </response>
+                </method>
+				<method name="POST" id="postAccount">
+                    <request>
+                        <param type="xsd:string" style="URI" name="tenant_id"/>
+						<param type="xsd:string" style="header" name="X-Account-Meta"/>
+                    </request>
+                    <response status="204"/>
+                </method>
+				<method name="POST" id="postAccount">
+                    <request>
+                        <param type="xsd:string" style="URI" name="tenant_id"/>
+						<param type="xsd:string" style="header" name="X-Remove-Account-Meta"/>
+                    </request>
+					<response status="204"/>
+                </method>
+				<resource path="{container}">
+					<param type="xsd:string" style="template" name="container"/>
+					<method name="GET" id="getContainer">
+						<request>
+							<param type="xsd:string" style="URI" name="tenant_id"/>
+							<param type="xsd:string" style="URI" name="container"/>
+							<param type="xsd:int" style="query" name="limit"/>
+							<param type="xsd:string" style="query" name="marker"/>
+							<param type="xsd:string" style="query" name="end_marker"/>
+							<param type="xsd:string" style="query" name="prefix"/>
+							<param type="xsd:string" style="query" name="format"/>
+							<param type="xsd:string" style="query" name="delimiter"/>
+						</request>
+						<response status="200"> 
+							<representation mediaType="application/json"/>   
+						</response> 
+					</method>
+					<method name="PUT" id="putContainer">
+						<request>
+							<param type="xsd:string" style="URI" name="tenant_id"/>
+							<param type="xsd:string" style="URI" name="container"/>
+							<param type="xsd:string" style="header" name="X-Container-Meta"/>
+						</request>
+						<response status="201"/> 
+					</method>
+					<method name="DELETE" id="deleteContainer">
+						<request>
+							<param type="xsd:string" style="URI" name="tenant_id"/>
+							<param type="xsd:string" style="URI" name="container"/>
+						</request>
+						<response status="204"/> 
+					</method>
+					<method name="HEAD" id="headContainer">
+						<request>
+							<param type="xsd:string" style="URI" name="tenant_id"/>
+							<param type="xsd:string" style="URI" name="container"/>
+						</request>
+						<response status="204">
+							<param type="xsd:int" style="header" name="X-Container-Object-Count"/>
+							<param type="xsd:int" style="header" name="X-Container-Bytes-Used"/>
+						</response>
+					</method>
+					<method name="POST" id="postContainer">
+						<request>
+							<param type="xsd:string" style="URI" name="tenant_id"/>
+							<param type="xsd:string" style="URI" name="container"/>
+							<param type="xsd:string" style="header" name="X-Container-Meta"/>
+						</request>
+						<response status="204"/> 
+					</method>
+					<resource path="{object}">
+						<param type="xsd:string" style="template" name="object"/>
+						<method name="GET" id="getObject">
+							<request>
+								<param type="xsd:string" style="URI" name="tenant_id"/>
+								<param type="xsd:string" style="URI" name="container"/>
+								<param type="xsd:string" style="URI" name="object"/>
+							</request>
+							<response status="200"> 
+								<representation mediaType="*/*"/>   
+							</response> 
+						</method>
+						<method name="PUT" id="putObject">
+							<request>
+								<param type="xsd:string" style="URI" name="tenant_id"/>
+								<param type="xsd:string" style="URI" name="container"/>
+								<param type="xsd:string" style="URI" name="object"/>
+								<param type="xsd:string" style="header" name="ETag"/>
+								<param type="xsd:string" style="header" name="Content-Disposition"/>
+								<param type="xsd:string" style="header" name="Content-Encoding"/>
+								<param type="xsd:int" style="header" name="X-Delete-At"/>
+								<param type="xsd:int" style="header" name="X-Delete-After"/>
+								<param type="xsd:string" style="header" name="X-Object-Meta"/>
+							</request>
+							<response status="201"> 
+								<representation mediaType="*/*"/>   
+							</response> 
+						</method>
+						<method name="DELETE" id="deleteObject">
+							<request>
+								<param type="xsd:string" style="URI" name="tenant_id"/>
+								<param type="xsd:string" style="URI" name="container"/>
+								<param type="xsd:string" style="URI" name="object"/>
+							</request>
+							<response status="204"/> 
+						</method>
+						<method name="COPY" id="copyObject">
+							<request>
+								<param type="xsd:string" style="URI" name="tenant_id"/>
+								<param type="xsd:string" style="URI" name="container"/>
+								<param type="xsd:string" style="URI" name="object"/>
+								<param type="xsd:string" style="header" name="Destination"/>
+							</request>
+							<response status="201"/> 
+						</method>
+						<method name="HEAD" id="headObject">
+							<request>
+								<param type="xsd:string" style="URI" name="tenant_id"/>
+								<param type="xsd:string" style="URI" name="container"/>
+								<param type="xsd:string" style="URI" name="object"/>
+							</request>
+							<response status="200"/> 
+						</method>
+						<method name="POST" id="postObject">
+							<request>
+								<param type="xsd:string" style="URI" name="tenant_id"/>
+								<param type="xsd:string" style="URI" name="container"/>
+								<param type="xsd:string" style="URI" name="object"/>
+								<param type="xsd:string" style="header" name="X-Object-Meta"/>
+								<param type="xsd:int" style="header" name="X-Delete-At"/>
+								<param type="xsd:int" style="header" name="X-Delete-After"/>
+							</request>
+							<response status="202"/> 
+						</method>
+					</resource>
+				</resource>
+            </resource>
+        </resource>
+    </resources>
+</application>

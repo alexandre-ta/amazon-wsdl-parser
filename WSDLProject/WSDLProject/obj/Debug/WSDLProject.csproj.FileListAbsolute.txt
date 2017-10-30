@@ -1,0 +1,11 @@
+C:\Users\Alexta\Documents\Visual Studio 2012\Projects\WSDLProject\WSDLProject\bin\Debug\WSDLProject.exe.config
+C:\Users\Alexta\Documents\Visual Studio 2012\Projects\WSDLProject\WSDLProject\bin\Debug\WSDLProject.exe
+C:\Users\Alexta\Documents\Visual Studio 2012\Projects\WSDLProject\WSDLProject\bin\Debug\WSDLProject.pdb
+C:\Users\Alexta\Documents\Visual Studio 2012\Projects\WSDLProject\WSDLProject\obj\Debug\WSDLProject.MainView.resources
+C:\Users\Alexta\Documents\Visual Studio 2012\Projects\WSDLProject\WSDLProject\obj\Debug\WSDLProject.Properties.Resources.resources
+C:\Users\Alexta\Documents\Visual Studio 2012\Projects\WSDLProject\WSDLProject\obj\Debug\WSDLProject.csproj.GenerateResource.Cache
+C:\Users\Alexta\Documents\Visual Studio 2012\Projects\WSDLProject\WSDLProject\obj\Debug\WSDLProject.exe
+C:\Users\Alexta\Documents\Visual Studio 2012\Projects\WSDLProject\WSDLProject\obj\Debug\WSDLProject.pdb
+C:\Users\Alexta\Desktop\assign4-7110309022\WSDLProject\WSDLProject\bin\Debug\WSDLProject.exe.config
+C:\Users\Alexta\Desktop\assign4-7110309022\WSDLProject\WSDLProject\obj\Debug\WSDLProject.exe
+C:\Users\Alexta\Desktop\assign4-7110309022\WSDLProject\WSDLProject\obj\Debug\WSDLProject.pdb
